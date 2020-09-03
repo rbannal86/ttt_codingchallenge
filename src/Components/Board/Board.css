@@ -7,9 +7,13 @@
 
 .game_board_button_bar {
   margin: auto;
-  width: 30vw;
+  width: 32vw;
 }
 
 .game_board_button_bar button {
   width: 50%;
+  border: 2px black solid;
+}
+.game_board_button_bar button:nth-child(3) {
+  width: 100%;
 }

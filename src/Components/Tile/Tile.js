@@ -7,7 +7,7 @@ export default function Tile(props) {
       className={"tile_body"}
       onClick={() => props.handleClick([props.row, props.column])}
     >
-      {props.tile}
+      {props.status}
     </div>
   );
 }
