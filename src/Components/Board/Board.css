@@ -1,0 +1,15 @@
+.game_board_main {
+  flex-wrap: wrap;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+}
+
+.game_board_button_bar {
+  margin: auto;
+  width: 30vw;
+}
+
+.game_board_button_bar button {
+  width: 50%;
+}
