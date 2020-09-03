@@ -8,7 +8,7 @@ const CheckBoard = {
       ) {
         console.log("Winner!");
         return true;
-      } else return false;
+      }
     }
   },
   checkRows(board) {
@@ -20,7 +20,7 @@ const CheckBoard = {
       ) {
         console.log("Winner!");
         return true;
-      } else return false;
+      }
     }
   },
   checkDiagonals(board) {
