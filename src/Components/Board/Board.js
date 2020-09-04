@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Tile from "../Tile/Tile";
 import CheckBoard from "../../Services/CheckBoard";
 import Scoreboard from "../Scoreboard/Scoreboard";
@@ -32,13 +32,14 @@ export default function Board(props) {
   }
   if (!player) coinFlip();
 
-  if (moves === 9 && !feedback) {
-    let newScores = scores;
-    newScores.Ties = newScores.Ties + 1;
-    setScores(newScores);
-    setFeedback("Cat's Game!");
-    setGameover(true);
-  }
+  useEffect(() => {
+    if (moves === 9) {
+      setScores({ ...scores, Ties: scores.Ties + 1 });
+      setFeedback("Cat's Game!");
+      setGameover(true);
+      setMoves(0);
+    }
+  }, [moves, scores]);
 
   const handleClick = (tile) => {
     setFeedback(null);
@@ -123,8 +124,12 @@ export default function Board(props) {
   return (
     <div>
       <Scoreboard scores={scores} players={props.players} />
-      <h3>{player}'s Turn</h3>
-      <div>{feedback}</div>
+      {feedback && feedback !== "This Tile Has Already Been Chosen!" ? (
+        <></>
+      ) : (
+        <h3 className={"game_board_player"}>{player}'s Turn</h3>
+      )}
+      <div className={"game_board_feedback"}>{feedback}</div>
       <div className={"game_board_main"}>{renderBoard()}</div>
       <div className={"game_board_button_bar"}>
         {gameover ? (

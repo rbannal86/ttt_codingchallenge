@@ -1,9 +1,39 @@
 .tile_body {
-  width: 10vw;
-  height: 10vw;
-  border: 2px black solid;
+  width: 25vw;
+  height: 25vw;
+  border: 4px black solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.tile_mark {
+  font-size: 3rem;
 }
 
 .true {
   background-color: #2dd881;
+}
+
+.column0 {
+  border-left: none;
+}
+
+.column2 {
+  border-right: none;
+}
+
+.row0 {
+  border-top: none;
+}
+
+.row2 {
+  border-bottom: none;
+}
+
+@media only screen and (min-width: 750px) {
+  .tile_body {
+    width: 8vw;
+    height: 8vw;
+  }
 }

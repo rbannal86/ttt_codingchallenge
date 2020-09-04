@@ -18,7 +18,14 @@ export default function Tile(props) {
   }
   return (
     <div
-      className={"tile_body " + isSelected}
+      className={
+        "tile_body " +
+        isSelected +
+        " row" +
+        props.row +
+        " column" +
+        props.column
+      }
       onClick={() => props.handleClick([props.row, props.column])}
     >
       <div className={"tile_mark"}>{props.status}</div>

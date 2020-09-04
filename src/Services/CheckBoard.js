@@ -6,7 +6,6 @@ const CheckBoard = {
         board[i][0] === board[i][2] &&
         board[i][0] !== " "
       ) {
-        console.log("Winner!");
         return true;
       }
     }
@@ -18,7 +17,6 @@ const CheckBoard = {
         board[0][i] === board[2][i] &&
         board[0][i] !== " "
       ) {
-        console.log("Winner!");
         return true;
       }
     }
@@ -32,7 +30,6 @@ const CheckBoard = {
         board[0][2] === board[2][0] &&
         board[0][2] !== " ")
     ) {
-      console.log("Winner!");
       return true;
     } else return false;
   },

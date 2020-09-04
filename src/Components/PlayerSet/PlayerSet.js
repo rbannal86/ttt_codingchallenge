@@ -8,7 +8,8 @@ export default function PlayerSet(props) {
   return (
     <form
       className={"player_form"}
-      onSubmit={() => {
+      onSubmit={(e) => {
+        e.preventDefault();
         props.handlePlayerSet(playerOne, playerTwo);
       }}
     >

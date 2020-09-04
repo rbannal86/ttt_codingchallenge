@@ -9,7 +9,6 @@
 
 .App-header {
   background-color: #140d4f;
-  margin-bottom: 5vh;
   text-align: left;
   padding-left: 8%;
   font-size: 1rem;
@@ -25,5 +24,10 @@ h4 {
 @media only screen and (min-width: 750px) {
   .App-header {
     font-size: 1.5rem;
+  }
+
+  .App-header h1 {
+    margin-top: 1%;
+    margin-bottom: 1%;
   }
 }

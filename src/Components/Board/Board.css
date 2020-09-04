@@ -5,18 +5,48 @@
   justify-content: center;
 }
 
+.game_board_feedback {
+  font-size: 2rem;
+}
+
+.game_board_player {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  font-size: 2rem;
+  color: #140d4f;
+}
+
 .game_board_button_bar {
+  margin-top: 5vh;
   margin: auto;
-  width: 32vw;
+  width: 75vw;
 }
 
 .game_board_button_bar button {
   width: 50%;
-  border: 2px black solid;
+  border: none;
+  background-color: #140d4f;
+  font-size: 1.2rem;
+  color: #6fedb7;
+  margin-top: 3%;
 }
+
+.game_board_button_bar button:hover {
+  background-color: #eb5e55;
+}
+
 .game_board_button_bar button:nth-child(3) {
   width: 100%;
 }
 .game_board_button_bar button:nth-child(4) {
   width: 100%;
+}
+
+@media only screen and (min-width: 750px) {
+  .game_board_button_bar {
+    margin-bottom: 5%;
+  }
+  .game_board_button_bar button {
+    margin-top: 1%;
+  }
 }

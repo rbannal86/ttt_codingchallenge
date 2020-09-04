@@ -1,0 +1,14 @@
+.scoreboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #eb5e55;
+  padding: 2%;
+}
+
+@media only screen and (min-width: 750px) {
+  .scoreboard {
+    font-size: 2rem;
+    padding: 1%;
+  }
+}
