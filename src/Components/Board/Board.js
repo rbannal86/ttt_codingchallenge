@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Tile from "../Tile/Tile";
 import CheckBoard from "../../Services/CheckBoard";
+import Scoreboard from "../Scoreboard/Scoreboard";
 import "./Board.css";
 
 export default function Board(props) {
@@ -15,15 +16,26 @@ export default function Board(props) {
   const [feedback, setFeedback] = useState(null);
   const [moves, setMoves] = useState(0);
   const [gameover, setGameover] = useState(false);
+  const [scores, setScores] = useState(null);
 
   const coinFlip = () => {
     let starting = Math.round(Math.random() * 1);
     setPlayer(props.players[starting]);
   };
 
+  if (!scores) {
+    let scoreObject = {};
+    scoreObject[props.players[0]] = 0;
+    scoreObject[props.players[1]] = 0;
+    scoreObject.Ties = 0;
+    setScores(scoreObject);
+  }
   if (!player) coinFlip();
 
   if (moves === 9 && !feedback) {
+    let newScores = scores;
+    newScores.Ties = newScores.Ties + 1;
+    setScores(newScores);
     setFeedback("Cat's Game!");
     setGameover(true);
   }
@@ -54,33 +66,39 @@ export default function Board(props) {
           handleClick={handleClick}
           row={index}
           column={colIndex}
+          selected={selected}
         />
       );
     });
   };
 
   const handleMove = () => {
-    let newBoard = board;
-    let column = selected[0];
-    let row = selected[1];
-    newBoard[row][column] = playerMark;
-    setBoard(newBoard);
+    if (selected) {
+      let newBoard = board;
+      let column = selected[0];
+      let row = selected[1];
+      newBoard[row][column] = playerMark;
+      setBoard(newBoard);
 
-    if (
-      CheckBoard.checkColumn(board) ||
-      CheckBoard.checkRows(board) ||
-      CheckBoard.checkDiagonals(board)
-    ) {
-      console.log(player);
-      setFeedback(player + " has won!");
-      setGameover(true);
-    } else {
-      let nextPlayer = props.players.filter((person) => person !== player);
-      if (playerMark === "O") setPlayerMark("X");
-      else setPlayerMark("O");
-      setPlayer(nextPlayer[0]);
-      setSelected(null);
-      setMoves(moves + 1);
+      if (
+        CheckBoard.checkColumn(board) ||
+        CheckBoard.checkRows(board) ||
+        CheckBoard.checkDiagonals(board)
+      ) {
+        console.log(player);
+        let newScores = scores;
+        newScores[player] = newScores[player] + 1;
+        setScores(newScores);
+        setFeedback(player + " has won!");
+        setGameover(true);
+      } else {
+        let nextPlayer = props.players.filter((person) => person !== player);
+        if (playerMark === "O") setPlayerMark("X");
+        else setPlayerMark("O");
+        setPlayer(nextPlayer[0]);
+        setSelected(null);
+        setMoves(moves + 1);
+      }
     }
   };
 
@@ -100,11 +118,11 @@ export default function Board(props) {
     setFeedback(null);
     setMoves(0);
     setGameover(false);
-    // setStartingPlayer(null);
   };
 
   return (
     <div>
+      <Scoreboard scores={scores} players={props.players} />
       <h3>{player}'s Turn</h3>
       <div>{feedback}</div>
       <div className={"game_board_main"}>{renderBoard()}</div>
@@ -121,6 +139,9 @@ export default function Board(props) {
             <button onClick={() => handleMove()}>Confirm Move</button>
             <button onClick={() => handleCancel()}>Cancel Move</button>
             <button onClick={() => handleReset()}>Restart</button>
+            <button onClick={() => props.handlePlayerReset()}>
+              New Players
+            </button>
           </>
         )}
       </div>

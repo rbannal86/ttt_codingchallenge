@@ -17,3 +17,6 @@
 .game_board_button_bar button:nth-child(3) {
   width: 100%;
 }
+.game_board_button_bar button:nth-child(4) {
+  width: 100%;
+}

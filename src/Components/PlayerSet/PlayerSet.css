@@ -1,0 +1,50 @@
+.player_form {
+  width: 90vw;
+  flex-direction: column;
+  margin: auto;
+}
+
+.player_form_button {
+  width: 85vw;
+  margin-top: 2vh;
+  height: 8vh;
+  font-size: 1.3rem;
+  background-color: #140d4f;
+  border: none;
+  color: #6fedb7;
+}
+
+.player_form_label {
+  font-size: 1.3rem;
+  float: left;
+  margin-bottom: 1vh;
+}
+
+.player_form_input {
+  width: 85vw;
+  height: 5vh;
+  margin-bottom: 3vh;
+}
+
+.player_form_info {
+  font-size: 0.8rem;
+  margin-top: 2vh;
+}
+
+@media only screen and (min-width: 750px) {
+  .player_form_button {
+    font-size: 2.5rem;
+  }
+
+  .player_form_label {
+    font-size: 2rem;
+  }
+
+  .player_form_info {
+    font-size: 1.5rem;
+  }
+
+  .player_form_input {
+    width: 75vw;
+  }
+}

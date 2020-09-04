@@ -3,4 +3,27 @@
   flex-direction: column;
   text-align: center;
   box-sizing: border-box;
+  color: #140d4f;
+  font-weight: bold;
+}
+
+.App-header {
+  background-color: #140d4f;
+  margin-bottom: 5vh;
+  text-align: left;
+  padding-left: 8%;
+  font-size: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #6fedb7;
+}
+
+@media only screen and (min-width: 750px) {
+  .App-header {
+    font-size: 1.5rem;
+  }
 }

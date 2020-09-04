@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./PlayerSet.css";
 
 export default function PlayerSet(props) {
   const [playerOne, setPlayerOne] = useState("");
@@ -11,9 +12,9 @@ export default function PlayerSet(props) {
         props.handlePlayerSet(playerOne, playerTwo);
       }}
     >
-      <h3>The Starting Player Will Be Randomized Before Each Game</h3>
-      <label>Enter Player One's Name: </label>
+      <label className={"player_form_label"}>Enter Player One's Name: </label>
       <input
+        className={"player_form_input"}
         type={"text"}
         value={playerOne}
         onChange={(e) => {
@@ -21,8 +22,9 @@ export default function PlayerSet(props) {
         }}
         required
       />
-      <label>Enter Player Two's Name: </label>
+      <label className={"player_form_label"}>Enter Player Two's Name: </label>
       <input
+        className={"player_form_input"}
         type={"text"}
         value={playerTwo}
         onChange={(e) => {
@@ -30,7 +32,12 @@ export default function PlayerSet(props) {
         }}
         required
       />
-      <button type={"submit"}>Start Game</button>
+      <button type={"submit"} className={"player_form_button"}>
+        Start Game
+      </button>
+      <div className={"player_form_info"}>
+        The Starting Player Will Be Randomized Before Each Game
+      </div>
     </form>
   );
 }
